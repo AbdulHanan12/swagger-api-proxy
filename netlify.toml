@@ -1,0 +1,6 @@
+[build]
+  command = "npm install"
+  functions = "functions" # Path to functions directory
+
+[functions]
+  node_bundler = "esbuild"

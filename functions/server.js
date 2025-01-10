@@ -1,9 +1,9 @@
 require("dotenv").config(); // Load environment variables from .env
 
 const express = require("express");
+const serverless = require("serverless-http"); // Netlify serverless wrapper
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Use PORT from .env or default to 3000
 
 // Middleware to parse JSON requests
 app.use(express.json());
@@ -36,7 +36,5 @@ app.all("*", (req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-});
+// Export the app wrapped in serverless
+module.exports.handler = serverless(app);
