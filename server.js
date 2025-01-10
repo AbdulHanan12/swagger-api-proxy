@@ -3,7 +3,7 @@ require("dotenv").config(); // Load environment variables from .env
 const express = require("express");
 // const serverless = require("serverless-http"); // Netlify serverless wrapper
 const axios = require('axios'); // Include axios for API requests
-
+const cors = require('cors'); // CORS middleware
 const app = express();
 
 // Middleware to parse JSON requests
