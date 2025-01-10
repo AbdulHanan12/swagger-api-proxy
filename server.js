@@ -49,7 +49,7 @@ app.post("/search-company", (req, res) => {
     headers: { 
       'Content-Type': 'application/json',
       'Authorization': process.env.AUTHORIZATION_KEY, // Store the authorization key in your .env
-      'Cookie': process.env.COOKIE // Store cookies in your .env
+      // 'Cookie': process.env.COOKIE // Store cookies in your .env
     },
     data : data
   };
@@ -59,7 +59,7 @@ app.post("/search-company", (req, res) => {
       res.json(response.data); // Send the response data back to the client
     })
     .catch((error) => {
-      res.status(500).json({ error: error.message }); // Handle errors and send them as response
+      res.status(500).json({ errorr: error }); // Handle errors and send them as response
     });
 });
 
