@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "node server.js"
+    "start": "node functions/server.js",
+    "build": "npm install"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
