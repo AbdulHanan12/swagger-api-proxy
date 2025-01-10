@@ -9,7 +9,7 @@ const app = express();
 // Middleware to parse JSON requests
 app.use(express.json());
 const PORT = process.env.PORT || 3000; // Use PORT from .env or default to 3000
-
+app.use(cors()); 
 // Route 1: Handle GET requests for API 1
 app.get("/api1", (req, res) => {
   res.json({ message: "This is API 1 response" });
