@@ -31,9 +31,9 @@ app.get("/api3/:param", (req, res) => {
 app.get("/company-detail/:param", (req, res) => {
   const uid = req.params.param;
   let config = {
-    method: 'post',
+    method: 'get',
     maxBodyLength: Infinity,
-    url: 'https://www.zefix.admin.ch/ZefixPublicREST/api/v1/company/uid/'.uid,
+    url: 'https://www.zefix.admin.ch/ZefixPublicREST/api/v1/company/uid/'+uid,
     headers: { 
       'Content-Type': 'application/json',
       'Authorization': process.env.AUTHORIZATION_KEY, // Store the authorization key in your .env
