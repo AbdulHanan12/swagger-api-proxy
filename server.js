@@ -80,6 +80,32 @@ app.get("/company-chid/:param", (req, res) => {
     });
 });
 
+app.get("/legal-form", (req, res) => {
+  const uid = req.params.param;
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: 'https://www.zefix.admin.ch/ZefixPublicREST/api/v1/legalForm',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': process.env.AUTHORIZATION_KEY, // Store the authorization key in your .env
+    },
+    data : {}
+  };
+
+  axios.request(config)
+    .then((response) => {
+         // Set CORS headers for the response
+      res.set('Access-Control-Allow-Origin', '*');  // Allow all domains
+      res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');  // Allowed methods
+      res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');  // Allowed headers
+      res.json(response.data); // Send the response data back to the client
+    })
+    .catch((error) => {
+      res.status(500).json({ errorr: error }); // Handle errors and send them as response
+    });
+});
+
 // Route 5: /search-company
 app.post("/search-company", (req, res) => {
   const { name, offset } = req.body; // Destructure name and offset from the request body
