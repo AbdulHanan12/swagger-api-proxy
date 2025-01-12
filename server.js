@@ -108,12 +108,9 @@ app.get("/legal-form", (req, res) => {
 
 // Route 5: /search-company
 app.post("/search-company", (req, res) => {
-  const { name, offset } = req.body; // Destructure name and offset from the request body
+  // const { name, canton, legalForm } = req.body; // Destructure name and offset from the request body
 
-  let data = JSON.stringify({
-    "offset": offset || 30, // Default to 30 if offset is not provided
-    "name": name || "KPMG"   // Default to "KPMG" if name is not provided
-  });
+  let data = JSON.stringify(req.body);
 
   let config = {
     method: 'post',
